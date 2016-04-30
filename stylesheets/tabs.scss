@@ -5,11 +5,19 @@
 
 	> div {
 		padding: 12px 24px;
-		color: gray;
-		cursor: pointer;
 
-		&.active {
-			color: rgb(0, 204, 153);
+		a {
+			color: gray;
+			cursor: pointer;
+			text-decoration: none;
+
+			&:hover {
+				color: rgb(0, 204, 153);
+			}
+
+			&.active {
+				color: rgb(0, 204, 153);
+			}
 		}
 	}
 }
