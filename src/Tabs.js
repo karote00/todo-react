@@ -1,63 +1,33 @@
 require('../stylesheets/tabs.scss');
 import React, { Component } from 'react';
-import { createStore } from 'redux';
+import { Router, Route, Link } from 'react-router';
 
-function tabActive(state = 0, action) {
-  if (state == undefined) return 'Starred';
-  switch (action.type) {
-	case 'All':
-	  return 'All';
-	case 'Starred':
-	  return 'Starred';
-	case 'Active':
-	  return 'Active';
-	case 'Complete':
-	  return 'Complete';
-	default:
-	  return 'All';
-  }
-}
 
-let store = createStore(tabActive);
-
-class Tab extends Component {
+class TabsList extends Component {
   constructor(props) {
     super(props);
-    this.state = { active: this.props.name == store.getState()? true: false };
-    this.click = () => changeTab();
-    // this.interval = setInterval(() => this.tick(), 1000);
+    this.state = {'active': 'All'};
   }
-
-  changeTab() {
-  	console.log(this.props)
-  }
-
-  // tick() {
-  //   this.setState({
-  //     counter: this.state.counter + this.props.increment
-  //   });
-  // }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
 
   render() {
     return (
-      <div className={this.state.active? 'active': ''}>{this.props.name}</div>
-    );
+      <div className="tabs">
+        <div className={this.state.active == this.props.name? 'active': ''}><Link to='All'>All</Link></div>
+        <div className={this.state.active == this.props.name? 'active': ''}><Link to='Starred'>Starred</Link></div>
+        <div className={this.state.active == this.props.name? 'active': ''}><Link to='Active'>Active</Link></div>
+        <div className={this.state.active == this.props.name? 'active': ''}><Link to='Complete'>Complete</Link></div>
+      </div>
+      <main>
+          {this.props.children}
+      </main>
+    )
   }
 }
 
 export class Tabs extends Component {
   render() {
     return (
-	    <div className="tabs">
-			<Tab name="All" />
-			<Tab name="Starred" />
-			<Tab name="Active" />
-			<Tab name="Complete" />
-	    </div>
-    );
+      <TabsList />
+    )
   }
 }
