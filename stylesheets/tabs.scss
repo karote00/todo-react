@@ -1,0 +1,16 @@
+.tabs {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+	> div {
+		padding: 12px 24px;
+		color: gray;
+		cursor: pointer;
+
+		&.active {
+			color: rgb(0, 204, 153);
+		}
+	}
+}
+
