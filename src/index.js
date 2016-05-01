@@ -4,7 +4,6 @@ import { render } from 'react-dom';
 import { Router, Route, Link, hashHistory } from 'react-router';
 import { TabContent } from './TabContent';
 import { Tabs } from './Tabs';
-import { tabsStore } from './tabState';
 
 class AllContent extends Component {
 	constructor(props) {
@@ -12,7 +11,6 @@ class AllContent extends Component {
 	}
 
 	render() {
-		tabsStore.dispatch({type: 'All'});
 		return (
 			<TabContent />
 		);
@@ -25,7 +23,6 @@ class StarredContent extends Component {
 	}
 
 	render() {
-		tabsStore.dispatch({type: 'Starred'});
 		return (
 			<TabContent />
 		);
@@ -38,7 +35,6 @@ class ActiveContent extends Component {
 	}
 
 	render() {
-		tabsStore.dispatch({type: 'Active'});
 		return (
 			<TabContent />
 		);
@@ -51,7 +47,6 @@ class CompleteContent extends Component {
 	}
 
 	render() {
-		tabsStore.dispatch({type: 'Complete'});
 		return (
 			<TabContent />
 		);
