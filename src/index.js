@@ -3,26 +3,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link, hashHistory } from 'react-router';
 import { TabContent } from './TabContent';
-import { createStore } from 'redux';
 import { Tabs } from './Tabs';
-
-function tabActive(state, action) {
-  if (state == undefined) return 'Starred';
-  switch (action.type) {
-	case 'All':
-	  return 'All';
-	case 'Starred':
-	  return 'Starred';
-	case 'Active':
-	  return 'Active';
-	case 'Complete':
-	  return 'Complete';
-	default:
-	  return 'All';
-  }
-}
-
-var tabsStore = createStore(tabActive);
+import { tabsStore } from './tabState';
 
 class AllContent extends Component {
 	constructor(props) {
@@ -43,7 +25,7 @@ class StarredContent extends Component {
 	}
 
 	render() {
-		tabsStore.dispatch({type: 'Complete'});
+		tabsStore.dispatch({type: 'Starred'});
 		return (
 			<TabContent />
 		);
