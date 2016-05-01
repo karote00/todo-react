@@ -14,10 +14,10 @@
 			&:hover {
 				color: rgb(0, 204, 153);
 			}
+		}
 
-			&.active {
-				color: rgb(0, 204, 153);
-			}
+		&.active a {
+			color: rgb(0, 204, 153);
 		}
 	}
 }
