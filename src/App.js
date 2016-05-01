@@ -2,10 +2,9 @@ require('../stylesheets/tabs.scss');
 import React, { Component } from 'react';
 import { Router, Route, Link, hashHistory } from 'react-router';
 
-export class Tabs extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {'active': this.props.location.pathname.substr(1)};
   }
 
   render() {

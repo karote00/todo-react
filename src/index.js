@@ -1,9 +1,9 @@
 require('../stylesheets/app.scss');
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Link, hashHistory } from 'react-router';
+import { Router, Route, Link, hashHistory, IndexRoute } from 'react-router';
 import { TabContent } from './TabContent';
-import { Tabs } from './Tabs';
+import { App } from './App';
 
 class AllContent extends Component {
 	constructor(props) {
@@ -55,13 +55,13 @@ class CompleteContent extends Component {
 
 render((
   <Router history={hashHistory}>
-    <Route path="/" component={Tabs}>
-      <Route>
-        <Route path="All" component={AllContent} />
-        <Route path="Starred" component={StarredContent} />
-        <Route path="Active" component={ActiveContent} />
-        <Route path="Complete" component={CompleteContent} />
-      </Route>
+    <Route path="/" component={App}>
+      <IndexRoute component={AllContent} />
+      <Route path="All" component={AllContent} />
+      <Route path="Starred" component={StarredContent} />
+      <Route path="Active" component={ActiveContent} />
+      <Route path="Complete" component={CompleteContent} />
+      <Route path="*" component={AllContent} />
     </Route>
   </Router>
   ), document.getElementById('root')
