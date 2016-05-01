@@ -1,22 +1,26 @@
-require('../stylesheets/app.scss');
+require('../stylesheets/content.scss');
 import React, { Component } from 'react';
 
-class Content extends Component {
+export class TabContent extends Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
-    return (
-      <div>Content</div>
-    )
+  handleChange(str) {
+    console.log(str)
   }
-}
 
-export class TabContent extends Component {
   render() {
+    var filterLink = {
+      requestChange: this.handleChange
+    };
     return (
-      <div>Content</div>
+      <div>
+        <div className="search">
+          <input type="text" valueLink={filterLink} placeholder="Type something..." />
+        </div>
+        <div>Content</div>
+      </div>
     )
   }
 }
