@@ -3,6 +3,7 @@
 	height: 100px;
 	background: white;
 	border: 1px solid rgb(230, 230, 230);
+	padding: 20px;
 }
 
 .check {
@@ -11,15 +12,19 @@
 	font-size: 24px;
 	float: left;
 	cursor: pointer;
+	position: relative;
+	line-height: 60px;
 }
 
 .circle {
 	margin-top: 2px;
-	width: 18px;
-	height: 18px;
+	width: 20px;
+	height: 20px;
 	border-radius: 10px;
 	background: rgba(0, 0, 0, 0);
 	border: 1px solid rgb(0, 204, 153);
 	float: left;
 	cursor: pointer;
+	position: relative;
+	top: 18px;
 }

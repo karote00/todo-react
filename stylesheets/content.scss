@@ -9,9 +9,6 @@
 	input {
 		border: 0;
 		width: 100%;
-		width: -webkit-calc(100% - #{$right-padding} - #{$left-padding});
-	    width:    -moz-calc(100% - #{$right-padding} - #{$left-padding});
-	    width:         calc(100% - #{$right-padding} - #{$left-padding});
 		height: 100%;
 		padding: 0 $right-padding 0 $left-padding;
 		font-size: 1em;
