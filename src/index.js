@@ -12,7 +12,7 @@ class AllContent extends Component {
 
 	render() {
 		return (
-			<TabContent />
+			<TabContent path={this.props.location.pathname} />
 		);
 	}
 }
@@ -24,7 +24,7 @@ class StarredContent extends Component {
 
 	render() {
 		return (
-			<TabContent />
+			<TabContent path={this.props.location.pathname} />
 		);
 	}
 }
@@ -36,7 +36,7 @@ class ActiveContent extends Component {
 
 	render() {
 		return (
-			<TabContent />
+			<TabContent path={this.props.location.pathname} />
 		);
 	}
 }
@@ -48,7 +48,7 @@ class CompleteContent extends Component {
 
 	render() {
 		return (
-			<TabContent />
+			<TabContent path={this.props.location.pathname} />
 		);
 	}
 }
