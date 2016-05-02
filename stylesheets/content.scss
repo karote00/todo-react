@@ -4,7 +4,7 @@
 	border: 1px solid rgb(230, 230, 230);
 	font-size: 16px;
 
-	$right-padding: 32px;
+	$right-padding: 40px;
 	$left-padding: 16px;
 	input {
 		border: 0;
@@ -18,7 +18,7 @@
 	.todo-plus {
 		color: rgb(0, 204, 153);
 		float: right;
-		margin-right: 4px;
+		margin-right: 12px;
 		margin-top: -40px;
 		position: relative;
 		cursor: pointer;
