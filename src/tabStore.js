@@ -26,12 +26,16 @@ function getList(action) {
 	switch (action.path) {
         case 'All':
             list = allList;
+            break;
         case 'Starred':
             list = starredList;
+            break;
         case 'Active':
             list = activeList;
+            break;
         case 'Complete':
             list = completeList;
+            break;
         default:
             list = allList;
     }
