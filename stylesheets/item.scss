@@ -3,19 +3,25 @@
 	height: 100px;
 	background: white;
 	border: 1px solid rgb(230, 230, 230);
-	padding: 20px;
+	padding: 12px;
+	position: relative;
 
 	.todo {
 		color: rgb(0, 204, 153);
-		line-height: 60px;
-		width: -webkit-calc(100% - #{60px});
-	    width:    -moz-calc(100% - #{60px});
-	    width:         calc(100% - #{60px});
+		line-height: 76px;
+		width: -webkit-calc(100% - #{68px});
+	    width:    -moz-calc(100% - #{68px});
+	    width:         calc(100% - #{68px});
 	    float: left;
 	}
 
 	ul li {
 		list-style: none;
+	}
+
+	.bottom {
+		position: absolute;
+		bottom: 0;
 	}
 }
 
@@ -26,7 +32,7 @@
 	float: left;
 	cursor: pointer;
 	position: relative;
-	line-height: 60px;
+	line-height: 76px;
 	width: 32px;
 
 	> div:first-child {
@@ -40,7 +46,36 @@
 		float: left;
 		cursor: pointer;
 		position: relative;
-		top: 18px;
+		top: 26px;
+	}
+}
+
+// .center-line {
+// 	text-decoration: line-through;
+// }
+
+.strike{
+    position: relative;
+}
+
+.strike::after{
+    content: '';
+    border-bottom: 2px solid rgb(0, 204, 153);
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 100%;
+}
+
+.menu {
+	position: relative;
+	color: gray;
+	float: right;
+	font-size: 24px;
+	height: 100%;
+
+	li {
+		cursor: pointer;
 	}
 }
 

@@ -2,13 +2,15 @@ require('../stylesheets/item.scss');
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { tabStore } from './tabStore';
+import classNames from 'classnames';
 
 export class Item extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			list: tabStore.getState(),
-			complete: this.props.data.complete
+			complete: this.props.data.complete,
+			starred: this.props.data.starred
 		};
 	}
 
@@ -22,14 +24,14 @@ export class Item extends Component {
 		return (
 			<div className="item-container">
 				<div className="check">
-					<div className="circle" className={!this.state.complete? '': 'hidden'} onClick={this.done.bind(this)} ></div>
+					<div className={!this.state.complete? '': 'hidden'} onClick={this.done.bind(this)} ></div>
 					<FontAwesome name="check-circle" className={this.state.complete? '': 'hidden'} onClick={this.done.bind(this)} />
 				</div>
-				<div className="todo">{this.props.data.todo}</div>
-				<ul>
-					<li><FontAwesome name="star-o" /></li>
-					<li><FontAwesome name="star" /></li>
-					<li><FontAwesome name="trash-o" /></li>
+				<div className="todo"><span className={!this.state.complete? '': 'strike'}>{this.props.data.todo}</span></div>
+				<ul className="menu">
+					<li className={!this.state.starred? '': 'hidden'}><FontAwesome name="star-o" /></li>
+					<li className={this.state.starred? '': 'hidden'}><FontAwesome name="star" /></li>
+					<li className="bottom"><FontAwesome name="trash-o" /></li>
 				</ul>
 			</div>
 		)
