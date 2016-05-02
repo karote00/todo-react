@@ -4,6 +4,19 @@
 	background: white;
 	border: 1px solid rgb(230, 230, 230);
 	padding: 20px;
+
+	.todo {
+		color: rgb(0, 204, 153);
+		line-height: 60px;
+		width: -webkit-calc(100% - #{60px});
+	    width:    -moz-calc(100% - #{60px});
+	    width:         calc(100% - #{60px});
+	    float: left;
+	}
+
+	ul li {
+		list-style: none;
+	}
 }
 
 .check {
@@ -14,17 +27,23 @@
 	cursor: pointer;
 	position: relative;
 	line-height: 60px;
+	width: 32px;
+
+	> div:first-child {
+		margin-top: 2px;
+		margin-right: 0px;
+		width: 20px;
+		height: 20px;
+		border-radius: 10px;
+		background: rgba(0, 0, 0, 0);
+		border: 1px solid rgb(0, 204, 153);
+		float: left;
+		cursor: pointer;
+		position: relative;
+		top: 18px;
+	}
 }
 
-.circle {
-	margin-top: 2px;
-	width: 20px;
-	height: 20px;
-	border-radius: 10px;
-	background: rgba(0, 0, 0, 0);
-	border: 1px solid rgb(0, 204, 153);
-	float: left;
-	cursor: pointer;
-	position: relative;
-	top: 18px;
+.hidden {
+	display: none;
 }
