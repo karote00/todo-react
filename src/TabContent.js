@@ -7,10 +7,12 @@ import { Item } from './Item';
 export class TabContent extends Component {
   constructor(props) {
     super(props);
-    var path = this.props.location.pathname && this.props.location.pathname.substr(1) || 'All';
-    tabStore.dispatch({type: path});
+    // var path = (this.props.path? this.props.path: 'All').replace(/\//, '');
+    var path = this.props.location.pathname && this.props.location.pathname.replace(/\//, '') || 'All';
+    tabStore.dispatch({type: 'Get', path: path});
     this.state = {
       list: tabStore.getState(),
+      path: path,
       todo: ''
     };
   }
@@ -20,8 +22,20 @@ export class TabContent extends Component {
   }
 
   addList() {
-    if (this.state.todo) this.state.list.push(this.state.todo);
-    this.setState({todo: ''});
+    if (this.state.todo) {
+      tabStore.dispatch({
+        type: 'Add',
+        item: {
+          todo: this.state.todo,
+          complete: false,
+          starred: false
+        }
+      });
+    }
+    this.setState({
+      list: tabStore.getState(),
+      todo: ''
+    });
   }
 
   render() {
@@ -33,7 +47,7 @@ export class TabContent extends Component {
         </div>
         <div>
           {this.state.list.map(function(item, i) {
-            return <Item key={i} data={item}/>;
+            return <Item key={i} data={item} />;
           })}
         </div>
       </div>
