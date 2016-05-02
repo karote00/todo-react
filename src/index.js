@@ -56,11 +56,11 @@ class CompleteContent extends Component {
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <Route path="All" component={TabContent} />
-      <Route path="Starred" component={TabContent} />
-      <Route path="Active" component={TabContent} />
-      <Route path="Complete" component={TabContent} />
-      <Route path="*" component={TabContent} />
+      <Route path="All" component={AllContent} />
+      <Route path="Starred" component={StarredContent} />
+      <Route path="Active" component={ActiveContent} />
+      <Route path="Complete" component={CompleteContent} />
+      <Route path="*" component={AllContent} />
     </Route>
   </Router>
   ), document.getElementById('root')
