@@ -7,8 +7,7 @@ import { Item } from './Item';
 export class TabContent extends Component {
   constructor(props) {
     super(props);
-    // var path = (this.props.path? this.props.path: 'All').replace(/\//, '');
-    var path = this.props.location.pathname && this.props.location.pathname.replace(/\//, '') || 'All';
+    var path = (this.props.path? this.props.path: 'All').replace(/\//, '');
     tabStore.dispatch({type: 'Get', path: path});
     this.state = {
       list: tabStore.getState(),
@@ -29,7 +28,8 @@ export class TabContent extends Component {
           todo: this.state.todo,
           complete: false,
           starred: false
-        }
+        },
+        path: this.state.path
       });
     }
     this.setState({
