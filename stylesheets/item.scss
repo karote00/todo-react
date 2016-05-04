@@ -1,13 +1,44 @@
+$lightgreen: rgb(0, 204, 153);
+$lightgray: rgb(230, 230, 230);
+$gray: gray;
+
+.All {
+	.todo {
+		color: $lightgreen;
+	}
+
+	.check {
+		color: $lightgreen;
+
+		>div:first-child {
+			border: 1px solid $lightgreen;
+		}
+	}
+}
+
+.Complete {
+	.todo {
+		color: $gray;
+	}
+
+	.check {
+		color: $gray;
+
+		>div:first-child {
+			border: 1px solid $gray;
+		}
+	}
+}
+
 .item-container {
 	width: 100%;
 	height: 100px;
 	background: white;
-	border: 1px solid rgb(230, 230, 230);
+	border: 1px solid $lightgray;
 	padding: 12px;
 	position: relative;
 
 	.todo {
-		color: rgb(0, 204, 153);
 		line-height: 76px;
 		width: -webkit-calc(100% - #{68px});
 	    width:    -moz-calc(100% - #{68px});
@@ -26,7 +57,6 @@
 }
 
 .check {
-	color: rgb(0, 204, 153);
 	float: left;
 	font-size: 24px;
 	float: left;
@@ -42,7 +72,6 @@
 		height: 20px;
 		border-radius: 10px;
 		background: rgba(0, 0, 0, 0);
-		border: 1px solid rgb(0, 204, 153);
 		float: left;
 		cursor: pointer;
 		position: relative;
@@ -50,9 +79,9 @@
 	}
 }
 
-// .center-line {
-// 	text-decoration: line-through;
-// }
+.star {
+	color: $lightgreen;
+}
 
 .strike{
     position: relative;
@@ -60,7 +89,7 @@
 
 .strike::after{
     content: '';
-    border-bottom: 2px solid rgb(0, 204, 153);
+    border-bottom: 2px solid $lightgreen;
     position: absolute;
     left: 0;
     top: 40%;
