@@ -2,23 +2,42 @@ import { createStore } from 'redux';
 
 var allList = [],
     starredList = [],
-    activeList = [],
     completeList = [];
 
 function tabActive(state = 0, action) {
-    var list = [];
-
     switch (action.type) {
         case 'Get':
-            list = getList(action);
             break;
         case 'Add':
             allList.push(action.item);
-            list = getList(action);
             break;
+        case 'Complete':
+        	var idx = completeList.indexOf(action.item);
+        	if (action.item.complete) {
+        		if (idx == -1) {
+        			completeList.unshift(action.item);
+        		}
+        	} else {
+        		if (idx > -1) {
+        			completeList.splice(idx, 1);
+        		}
+        	}
+        	break;
+        case 'Starred':
+        	var idx = starredList.indexOf(action.item);
+        	if (action.item.starred) {
+        		if (idx == -1) {
+        			starredList.unshift(action.item);
+        		}
+        	} else {
+        		if (idx > -1) {
+        			starredList.splice(idx, 1);
+        		}
+        	}
+        	break;
     }
 
-    return list;
+    return getList(action);
 }
 
 function getList(action) {
@@ -31,7 +50,11 @@ function getList(action) {
             list = starredList;
             break;
         case 'Active':
-            list = activeList;
+        	for (var i = 0; i < allList.length; i++) {
+        		if (!allList[i].complete && !allList[i].starred) {
+        			list.push(allList[i]);
+        		}
+        	}
             break;
         case 'Complete':
             list = completeList;
