@@ -49,21 +49,32 @@ export class Item extends Component {
 		name['item-container'] = true;
 		var container = classNames(name);
 
-		var greenStar = classNames({
+		var complete = classNames({
+			'complete': true,
+			'hidden': this.state.complete
+		});
+
+		var star = classNames({
 			'star': true,
 			'hidden': !this.state.starred
+		});
+
+		var star_o = classNames({
+			'star_o': true,
+			'hidden': this.state.starred,
+			'active': this.state.starred
 		});
 
 		return (
 			<div className={container}>
 				<div className="check">
-					<div className={!this.state.complete? '': 'hidden'} onClick={this.complete.bind(this)} ></div>
+					<div className={complete} onClick={this.complete.bind(this)} ></div>
 					<FontAwesome name="check-circle" className={this.state.complete? '': 'hidden'} onClick={this.complete.bind(this)} />
 				</div>
 				<div className="todo"><span className={this.state.complete && this.state.path != 'Complete'? 'strike': ''}>{this.props.data.todo}</span></div>
 				<ul className="menu">
-					<li className={!this.state.starred? '': 'hidden'} onClick={this.starred.bind(this)}><FontAwesome name="star-o" /></li>
-					<li className={greenStar} onClick={this.starred.bind(this)}><FontAwesome name="star" /></li>
+					<li className={star_o} onClick={this.starred.bind(this)}><FontAwesome name="star-o" /></li>
+					<li className={star} onClick={this.starred.bind(this)}><FontAwesome name="star" /></li>
 					<li className="bottom"><FontAwesome name="trash-o" /></li>
 				</ul>
 			</div>
