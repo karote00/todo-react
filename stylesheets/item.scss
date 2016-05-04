@@ -1,8 +1,10 @@
 $lightgreen: rgb(0, 204, 153);
 $lightgray: rgb(230, 230, 230);
 $gray: gray;
+$lightred: rgb(230, 0, 0);
+$lightyellow: rgb(255, 228, 51);
 
-.All {
+.All, .Active {
 	.todo {
 		color: $lightgreen;
 	}
@@ -10,23 +12,27 @@ $gray: gray;
 	.check {
 		color: $lightgreen;
 
-		>div:first-child {
+		.complete:hover {
 			border: 1px solid $lightgreen;
 		}
 	}
+
+	.strike::after {
+	    border-bottom: 2px solid $lightgreen;
+	}
 }
 
-.Complete {
+.Complete, .Starred {
 	.todo {
 		color: $gray;
 	}
 
 	.check {
 		color: $gray;
+	}
 
-		>div:first-child {
-			border: 1px solid $gray;
-		}
+	.strike::after {
+	    border-bottom: 2px solid $gray;
 	}
 }
 
@@ -37,6 +43,7 @@ $gray: gray;
 	border: 1px solid $lightgray;
 	padding: 12px;
 	position: relative;
+	cursor: pointer;
 
 	.todo {
 		line-height: 76px;
@@ -46,13 +53,34 @@ $gray: gray;
 	    float: left;
 	}
 
+	.strike{
+	    position: relative;
+	}
+
+	.strike::after{
+	    content: '';
+	    position: absolute;
+	    left: 0;
+	    top: 50%;
+	    width: 100%;
+	}
+
 	ul li {
 		list-style: none;
 	}
 
-	.bottom {
-		position: absolute;
-		bottom: 0;
+	&:hover {
+		.star_o {
+			display: block;
+
+			&.active {
+				display: none;
+			}
+		}
+
+		.bottom {
+			display: block;
+		}
 	}
 }
 
@@ -65,7 +93,8 @@ $gray: gray;
 	line-height: 76px;
 	width: 32px;
 
-	> div:first-child {
+	.complete {
+		border: 1px solid $gray;
 		margin-top: 2px;
 		margin-right: 0px;
 		width: 20px;
@@ -79,23 +108,6 @@ $gray: gray;
 	}
 }
 
-.star {
-	color: $lightgreen;
-}
-
-.strike{
-    position: relative;
-}
-
-.strike::after{
-    content: '';
-    border-bottom: 2px solid $lightgreen;
-    position: absolute;
-    left: 0;
-    top: 40%;
-    width: 100%;
-}
-
 .menu {
 	position: relative;
 	color: gray;
@@ -105,6 +117,23 @@ $gray: gray;
 
 	li {
 		cursor: pointer;
+	}
+
+	.star {
+		color: $lightyellow;
+	}
+
+	.star_o {
+		display: none;
+		color: $lightyellow;
+	}
+
+	.bottom {
+		display: none;
+		position: absolute;
+		bottom: 0;
+		left: 2px;
+		color: $lightred;
 	}
 }
 
