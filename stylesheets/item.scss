@@ -4,7 +4,7 @@ $gray: gray;
 $lightred: rgb(230, 0, 0);
 $lightyellow: rgb(255, 228, 51);
 
-.All, .Active {
+.All, .Active, .Starred {
 	.todo {
 		color: $lightgreen;
 
@@ -33,7 +33,7 @@ $lightyellow: rgb(255, 228, 51);
 	}
 }
 
-.Complete, .Starred {
+.Complete {
 	.todo {
 		color: $gray;
 
