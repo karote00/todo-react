@@ -4,6 +4,15 @@ import FontAwesome from 'react-fontawesome';
 import { tabStore } from './tabStore';
 import { Item } from './Item';
 
+let increament = 0;
+let all = JSON.parse(localStorage.getItem('ALL_LIST'));
+if (all[0] && all[0].length > 0) {
+  for (var i = 0; i < all[0].length; i++) {
+    increament = Math.max(increament, all[0][i].id);
+  }
+  increament++;
+}
+
 export class TabContent extends Component {
   constructor(props) {
     super(props);
@@ -27,11 +36,13 @@ export class TabContent extends Component {
         item: {
           todo: this.state.todo,
           complete: false,
-          starred: false
+          starred: false,
+          id: increament
         },
         path: this.state.path
       });
     }
+    increament++;
     this.setState({
       list: tabStore.getState(),
       todo: ''
