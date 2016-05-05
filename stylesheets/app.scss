@@ -59,6 +59,10 @@ input {
 	> div > div {
 		min-width: 400px;
 	}
+
+	@media screen and (max-width: 480px) {
+		min-width: 480px;
+	}
 }
 
 .fixed-page {
@@ -66,9 +70,7 @@ input {
 		position: fixed;
 		width: 100%;
 		top: 0;
-		left: -webkit-calc(50% - #{395px});
-	    left:    -moz-calc(50% - #{395px});
-	    left:         calc(50% - #{395px});
+		left: 0;
 		z-index: 100;
 		pointer-events: none;
 
