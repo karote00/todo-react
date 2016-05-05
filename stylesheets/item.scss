@@ -7,6 +7,10 @@ $lightyellow: rgb(255, 228, 51);
 .All, .Active {
 	.todo {
 		color: $lightgreen;
+
+		input {
+			color: $lightgreen;
+		}
 	}
 
 	.check {
@@ -25,6 +29,10 @@ $lightyellow: rgb(255, 228, 51);
 .Complete, .Starred {
 	.todo {
 		color: $gray;
+
+		input {
+			color: $gray;
+		}
 	}
 
 	.check {
@@ -51,6 +59,14 @@ $lightyellow: rgb(255, 228, 51);
 	    width:    -moz-calc(100% - #{68px});
 	    width:         calc(100% - #{68px});
 	    float: left;
+
+	    input {
+	    	outline: none;
+	    	height: 40px;
+	    	line-height: 38px;
+	    	font-size: 1em;
+	    	border: 0;
+	    }
 	}
 
 	.strike{
