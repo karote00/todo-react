@@ -64,12 +64,13 @@ input {
 .fixed-page {
 	.tabs {
 		position: fixed;
-		width: 400px;
+		width: 100%;
 		top: 0;
-		left: -webkit-calc(50% - #{200px});
-	    left:    -moz-calc(50% - #{200px});
-	    left:         calc(50% - #{200px});
+		left: -webkit-calc(50% - #{395px});
+	    left:    -moz-calc(50% - #{395px});
+	    left:         calc(50% - #{395px});
 		z-index: 100;
+		pointer-events: none;
 
 		@extend .linear-blue;
 	}
@@ -79,14 +80,11 @@ input {
 		top: 40px;
 		width: 400px;
 		z-index: 100;
+		pointer-events: none;
 	}
 
 	.children {
 		position: relative;
-		top: 50px;
-	}
-
-	.list-item {
-		margin-top: 43px;
+		top: 90px;
 	}
 }
