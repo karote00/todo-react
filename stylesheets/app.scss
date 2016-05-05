@@ -7,6 +7,35 @@
 }
 
 body {
+	font-family: sans-serif;
+}
+
+input {
+	font-family: sans-serif;
+}
+
+.header-container {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+}
+
+.header, .sub-header {
+	color: rgb(0, 204, 153);
+}
+
+.header {
+	font-size: 88px;
+}
+
+.sub-header {
+	font-size: 20px;
+	position: absolute;
+	bottom: 12px;
+}
+
+.linear-blue {
 	background: rgba(247,255,255,1);
 	background: -moz-linear-gradient(top, rgba(247,255,255,1) 0%, rgba(195,247,247,1) 47%, rgba(52,223,229,1) 82%, rgba(52,223,229,1) 100%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(247,255,255,1)), color-stop(47%, rgba(195,247,247,1)), color-stop(82%, rgba(52,223,229,1)), color-stop(100%, rgba(52,223,229,1)));
@@ -16,11 +45,48 @@ body {
 	background: linear-gradient(to bottom, rgba(247,255,255,1) 0%, rgba(195,247,247,1) 47%, rgba(52,223,229,1) 82%, rgba(52,223,229,1) 100%);
 	background-attachment: fixed;
 	background-repeat: no-repeat;
-
-	height: 100vh;
-	font-family: sans-serif;
 }
 
-input {
-	font-family: sans-serif;
+.page {
+	display: flex;
+	justify-content: center;
+	overflow: auto;
+	width: 100%;
+	@extend .linear-blue;
+
+	height: 100vh;
+
+	> div > div {
+		min-width: 400px;
+	}
+}
+
+.fixed-page {
+	.tabs {
+		position: fixed;
+		width: 400px;
+		top: 0;
+		left: -webkit-calc(50% - #{200px});
+	    left:    -moz-calc(50% - #{200px});
+	    left:         calc(50% - #{200px});
+		z-index: 100;
+
+		@extend .linear-blue;
+	}
+
+	.newTodo {
+		position: fixed;
+		top: 40px;
+		width: 400px;
+		z-index: 100;
+	}
+
+	.children {
+		position: relative;
+		top: 50px;
+	}
+
+	.list-item {
+		margin-top: 43px;
+	}
 }
