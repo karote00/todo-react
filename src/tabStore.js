@@ -35,6 +35,14 @@ function tabActive(state = 0, action) {
         		}
         	}
         	break;
+        case 'Delete':
+			var idxA = allList.indexOf(action.item);
+			var idxC = completeList.indexOf(action.item);
+			var idxS = starredList.indexOf(action.item);
+			if (idxA > -1) allList.splice(idxA, 1);
+			if (idxC > -1) completeList.splice(idxC, 1);
+			if (idxS > -1) starredList.splice(idxS, 1);
+        	break;
     }
 
     return getList(action);
