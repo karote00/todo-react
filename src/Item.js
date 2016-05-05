@@ -62,10 +62,19 @@ export class Item extends Component {
 	changeInput(e) {
 		this.setState({changeInput: !this.state.changeInput});
 		if (!this.state.changeInput) {
-			console.log('set focus')
-			console.log(this.refs.todoInput)
-			ReactDOM.findDOMNode(this.refs.todoInput).focus();
+			var _this = this;
+			setTimeout(function() {
+				_this.refs.todoInput.focus();
+			}, 50);
 		}
+	}
+
+	showInput() {
+		this.setState({changeInput: true});
+		var _this = this;
+		setTimeout(function() {
+			_this.refs.todoInput.focus();
+		}, 50);
 	}
 
 	render() {
@@ -101,7 +110,7 @@ export class Item extends Component {
 					<div className={complete} onClick={this.complete.bind(this)} ></div>
 					<FontAwesome name="check-circle" className={this.state.complete? '': 'hidden'} onClick={this.complete.bind(this)} />
 				</div>
-				<div className="todo">
+				<div className="todo" onClick={this.showInput.bind(this)}>
 					<span onClick={this.changeInput.bind(this)} className={todoText}>{this.state.todo}</span>
 					<input type="text" ref="todoInput" onBlur={this.changeInput.bind(this)} onChange={this.handleChange.bind(this)} value={this.state.todo} className={!this.state.changeInput? 'hidden': ''} />
 				</div>
