@@ -75,7 +75,6 @@ export class Item extends Component {
 
 	showInput(e) {
 		if (!this.state.complete) {
-			console.log(this)
 			this.setState({changeInput: true});
 			var _item = this.refs.todoInput;
 			setTimeout(function() {
