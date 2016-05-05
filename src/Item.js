@@ -63,9 +63,11 @@ export class Item extends Component {
 		if (!this.state.complete) {
 			this.setState({changeInput: !this.state.changeInput});
 			if (!this.state.changeInput) {
-				var _this = this;
+				var _item = this.refs.todoInput;
 				setTimeout(function() {
-					_this.refs.todoInput.focus();
+					_item.focus();
+					_item.selectionStart = 10000;
+					_item.selectionEnd = 10000;
 				}, 50);
 			}
 		}
@@ -73,10 +75,13 @@ export class Item extends Component {
 
 	showInput(e) {
 		if (!this.state.complete) {
+			console.log(this)
 			this.setState({changeInput: true});
-			var _this = this;
+			var _item = this.refs.todoInput;
 			setTimeout(function() {
-				_this.refs.todoInput.focus();
+				_item.focus();
+				_item.selectionStart = 10000;
+				_item.selectionEnd = 10000;
 			}, 50);
 		}
 	}
