@@ -61,7 +61,7 @@ export class TabContent extends Component {
 
   render() {
     var path = this.state.path;
-    var updateList = this.updateList.bind(this);
+
     return (
       <div>
         <div className="newTodo">
@@ -70,8 +70,8 @@ export class TabContent extends Component {
         </div>
         <div>
           {this.state.list.map(function(item, i) {
-            return <Item key={i} data={item} path={path} onUpdate={updateList} />;
-          })}
+            return <Item key={i} data={item} path={path} onUpdate={this.updateList.bind(this)} />;
+          }.bind(this))}
         </div>
       </div>
     )
