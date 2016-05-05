@@ -27,7 +27,7 @@ function tabActive(state, action) {
             allList.push(action.item);
             break;
         case 'Complete':
-        	var idx = completeList.indexOf(action.item);
+        	var idx = getListIdx(completeList, action.item);
         	if (action.item.complete) {
         		if (idx == -1) {
         			completeList.unshift(action.item);
@@ -39,7 +39,7 @@ function tabActive(state, action) {
         	}
         	break;
         case 'Starred':
-        	var idx = starredList.indexOf(action.item);
+        	var idx = getListIdx(starredList, action.item);
         	if (action.item.starred) {
         		if (idx == -1) {
         			starredList.unshift(action.item);
@@ -51,9 +51,9 @@ function tabActive(state, action) {
         	}
         	break;
         case 'Delete':
-			var idxA = allList.indexOf(action.item);
-			var idxC = completeList.indexOf(action.item);
-			var idxS = starredList.indexOf(action.item);
+			var idxA = getListIdx(allList, action.item);
+			var idxC = getListIdx(completeList, action.item);
+			var idxS = getListIdx(starredList, action.item);
 			if (idxA > -1) allList.splice(idxA, 1);
 			if (idxC > -1) completeList.splice(idxC, 1);
 			if (idxS > -1) starredList.splice(idxS, 1);
@@ -88,6 +88,13 @@ function getList(action) {
             list = allList;
     }
     return list;
+}
+
+function getListIdx(list, item) {
+	for (var i = 0; i < list.length; i++) {
+		if (item.id == list[i].id) return i;
+	}
+	return -1;
 }
 
 const tabStore = createStore(
