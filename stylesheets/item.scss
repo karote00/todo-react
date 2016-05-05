@@ -8,6 +8,7 @@ $lightyellow: rgb(255, 228, 51);
 	.todo {
 		color: $lightgreen;
 
+
 		input {
 			color: $lightgreen;
 		}
@@ -16,8 +17,14 @@ $lightyellow: rgb(255, 228, 51);
 	.check {
 		color: $lightgreen;
 
-		.complete:hover {
-			border: 1px solid $lightgreen;
+		.complete {
+			&.edit {
+				border: 1px solid $gray !important;
+			}
+
+			&:hover {
+				border: 1px solid $lightgreen;
+			}
 		}
 	}
 
@@ -60,11 +67,31 @@ $lightyellow: rgb(255, 228, 51);
 	    width:         calc(100% - #{68px});
 	    float: left;
 
+		&.edit input {
+			color: $gray !important;
+		}
+
+	    >div {
+	    	width: 100%;
+	    	height: 52px;
+	    	margin-top: 10px;
+
+	    	span {
+	    		position: relative;
+	    		top: -10px;
+	    	}
+
+	    	&:hover {
+	    		background: rgb(223, 235, 247);
+	    	}
+	    }
+
 	    input {
 	    	outline: none;
 	    	height: 40px;
 	    	line-height: 38px;
 	    	font-size: 1em;
+	    	width: 100%;
 	    	border: 0;
 	    }
 	}
@@ -86,6 +113,7 @@ $lightyellow: rgb(255, 228, 51);
 	}
 
 	&:hover {
+		box-shadow: 0px 0px 5px #888888;
 		.star_o {
 			display: block;
 
@@ -110,7 +138,7 @@ $lightyellow: rgb(255, 228, 51);
 	width: 32px;
 
 	.complete {
-		border: 1px solid $gray;
+		border: 1px solid $lightgreen;
 		margin-top: 2px;
 		margin-right: 0px;
 		width: 20px;
