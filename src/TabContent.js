@@ -36,10 +36,16 @@ export class TabContent extends Component {
       list: tabStore.getState(),
       todo: ''
     });
+
+    this.refs.addTodo.focus();
   }
 
   updateList() {
     this.setState({list: tabStore.getState()});
+  }
+
+  componentDidMount() {
+    this.refs.addTodo.focus();
   }
 
   render() {
@@ -48,7 +54,7 @@ export class TabContent extends Component {
     return (
       <div>
         <div className="newTodo">
-          <input type="text" value={this.state.todo} onChange={this.handleChange.bind(this)} placeholder="Type something..." />
+          <input type="text" ref="addTodo" value={this.state.todo} onChange={this.handleChange.bind(this)} placeholder="Type something..." />
           <FontAwesome name="plus" className="todo-plus" size="2x" onClick={this.addList.bind(this)} />
         </div>
         <div>
