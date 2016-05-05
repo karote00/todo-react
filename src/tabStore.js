@@ -1,10 +1,25 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import promise from 'redux-promise';
+import createLogger from 'redux-logger';
+
+const logger = createLogger();
 
 var allList = [],
     starredList = [],
     completeList = [];
 
-function tabActive(state = 0, action) {
+function tabActive(state, action) {
+	const storedState = JSON.parse(
+		localStorage.getItem('ALL_LIST')
+	);
+
+	if (typeof state == 'undefined') {
+		allList = storedState[0];
+		completeList = storedState[1];
+		starredList = storedState[2];
+	}
+
     switch (action.type) {
         case 'Get':
             break;
@@ -45,6 +60,8 @@ function tabActive(state = 0, action) {
         	break;
     }
 
+	localStorage.setItem('ALL_LIST', JSON.stringify([allList, completeList, starredList]));
+
     return getList(action);
 }
 
@@ -73,6 +90,9 @@ function getList(action) {
     return list;
 }
 
-var tabStore = createStore(tabActive);
+const tabStore = createStore(
+  tabActive,
+  applyMiddleware(thunk, promise, logger)
+);
 
 export { tabStore };
