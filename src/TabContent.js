@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import { tabStore } from './tabStore';
 import { Item } from './Item';
 
-let increament = 0;
+let increament = 1;
 let all = JSON.parse(localStorage.getItem('ALL_LIST'));
 if (all[0] && all[0].length > 0) {
   for (var i = 0; i < all[0].length; i++) {
@@ -70,7 +70,7 @@ export class TabContent extends Component {
         </div>
         <div>
           {this.state.list.map(function(item, i) {
-            return <Item key={i} data={item} path={path} onUpdate={this.updateList.bind(this)} />;
+            return <Item key={item.id} data={item} path={path} onUpdate={this.updateList.bind(this)} />;
           }.bind(this))}
         </div>
       </div>
